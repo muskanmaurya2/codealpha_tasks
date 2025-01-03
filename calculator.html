@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #e4e4e4;
+        }
+
+        .calculator {
+            background: #2f2f2f;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            width: 320px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .display {
+            width: 100%;
+            height: 60px;
+            background-color: #333;
+            color: white;
+            text-align: right;
+            font-size: 2.5em;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 15px;
+            width: 100%;
+        }
+
+        .button {
+            background: linear-gradient(145deg, #6e6e6e, #9e9e9e);
+            color: white;
+            font-size: 1.8em;
+            border: none;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:hover {
+            background: linear-gradient(145deg, #8e8e8e, #b0b0b0);
+            transform: translateY(-3px);
+        }
+
+        .button:active {
+            background: linear-gradient(145deg, #4e4e4e, #7e7e7e);
+            transform: translateY(1px);
+        }
+
+        .operator {
+            background: linear-gradient(145deg, #f2a900, #e68f00);
+        }
+
+        .operator:hover {
+            background: linear-gradient(145deg, #ffbe3e, #e68f00);
+        }
+
+        .equal {
+            background: linear-gradient(145deg, #28a745, #218838);
+            grid-column: span 4;
+            font-size: 2em;
+        }
+
+        .equal:hover {
+            background: linear-gradient(145deg, #34d058, #218838);
+        }
+
+        button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" class="display" disabled>
+        <div class="buttons">
+            <button class="button" onclick="appendToDisplay('7')">7</button>
+            <button class="button" onclick="appendToDisplay('8')">8</button>
+            <button class="button" onclick="appendToDisplay('9')">9</button>
+            <button class="button operator" onclick="appendToDisplay('/')">/</button>
+            <button class="button" onclick="appendToDisplay('4')">4</button>
+            <button class="button" onclick="appendToDisplay('5')">5</button>
+            <button class="button" onclick="appendToDisplay('6')">6</button>
+            <button class="button operator" onclick="appendToDisplay('*')">*</button>
+            <button class="button" onclick="appendToDisplay('1')">1</button>
+            <button class="button" onclick="appendToDisplay('2')">2</button>
+            <button class="button" onclick="appendToDisplay('3')">3</button>
+            <button class="button operator" onclick="appendToDisplay('-')">-</button>
+            <button class="button" onclick="appendToDisplay('0')">0</button>
+            <button class="button" onclick="appendToDisplay('.')">.</button>
+            <button class="button" onclick="clearDisplay()">C</button>
+            <button class="button operator" onclick="appendToDisplay('+')">+</button>
+            <button class="button equal" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculateResult() {
+            let expression = document.getElementById('display').value;
+            try {
+                document.getElementById('display').value = eval(expression);
+            } catch (e) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
+
