@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ba9bdb, #2575fc);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .gallery-container {
+            width: 100%;
+            max-width: 1300px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery:hover {
+            transform: scale(1.02);
+        }
+
+        .image-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 15px;
+            object-fit: contain;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #f00;
+        }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .nav-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 40px;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .nav-btn:focus {
+            outline: none;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #2575fc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #6a11cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Image Gallery</h1>
+    <p>Click on an image below to explore more</p>
+    <button class="btn" onclick="document.querySelector('.gallery').scrollIntoView({ behavior: 'smooth' })">View Gallery</button>
+
+    <div class="gallery-container">
+        <div class="gallery">
+            <!--<div class="image-item" onclick="openLightbox(0)">
+                <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Fflower%2520wallpaper%2F&psig=AOvVaw1MDTEBsAY5DO6TkgQhORdI&ust=1735882052307000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLilwNqm1ooDFQAAAAAdAAAAABAE" alt="Image 1">
+            </div>-->
+            <div class="image-item" onclick="openLightbox(1)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-sE3Mb8o_pZe90SXw4B_bqICjnzeq1thD_Q&s" alt="Image 2">
+            </div>
+            <div class="image-item" onclick="openLightbox(2)">  
+            <img src="https://wallpapers.com/images/featured/moon-mqcx9pq0fg2ma4lp.jpg" alt="Image 3">
+            </div>
+            <div class="image-item" onclick="openLightbox(4)">
+            <img src="https://t4.ftcdn.net/jpg/07/57/59/99/360_F_757599957_wN6GSdCUh2RtW8iNB3RE1EQEWHqxarEJ.jpg" alt="Image 4">
+            </div>
+            <div class="image-item" onclick="openLightbox(5)">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSizPA0b8479iKid17bOuM8kj9hBGU4yHLWgw&s" alt="Image 5">
+            </div>
+            <div class="image-item" onclick="openLightbox(6)">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvo97aa46JaeDY0EojickQOgDjZZBLviBFDg&s" alt="Image 6">
+            </div>
+            <div class="image-item" onclick="openLightbox(7)">
+            <img src="https://cdn.pixabay.com/photo/2021/08/07/19/49/cosmea-6529220_1280.jpg" alt="Image 7">
+            </div>
+
+
+
+
+
+
+
+
+            <!-- Add more images as needed -->
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Lightbox Image">
+            <div class="navigation">
+                <button class="nav-btn prev" onclick="changeImage(-1)">&#10094;</button>
+                <button class="nav-btn next" onclick="changeImage(1)">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentImageIndex = 0;
+        const images = [
+            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Fflower%2520wallpaper%2F&psig=AOvVaw1MDTEBsAY5DO6TkgQhORdI&ust=1735882052307000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLilwNqm1ooDFQAAAAAdAAAAABAE", 
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-sE3Mb8o_pZe90SXw4B_bqICjnzeq1thD_Q&s", 
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVPHFXN6QIkNgICj9GOVNI7Gw9K78-9gB4_Q&s", 
+            "https://wallpapers.com/images/featured/moon-mqcx9pq0fg2ma4lp.jpg",
+            "https://t4.ftcdn.net/jpg/07/57/59/99/360_F_757599957_wN6GSdCUh2RtW8iNB3RE1EQEWHqxarEJ.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSizPA0b8479iKid17bOuM8kj9hBGU4yHLWgw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvo97aa46JaeDY0EojickQOgDjZZBLviBFDg&s",
+            "https://cdn.pixabay.com/photo/2021/08/07/19/49/cosmea-6529220_1280.jpg"
+            // Add more image URLs as needed
+        ];
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = images[currentImageIndex];
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+            if (currentImageIndex >= images.length) currentImageIndex = 0;
+
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = images[currentImageIndex];
+        }
+    </script>
+</body>
+</html>
