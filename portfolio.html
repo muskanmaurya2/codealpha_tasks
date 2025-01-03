@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: #f4f4f9;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f4f4f9;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        #projects .project-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .project-card {
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card h2 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-card p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .project-card a {
+            text-decoration: none;
+            color: #fff;
+            background: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .project-card a:hover {
+            background: #555;
+        }
+
+        #skills ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        #skills ul li {
+            list-style: none;
+            background: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+        }
+
+        #contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        #contact-form input, #contact-form textarea {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #contact-form button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #contact-form button:hover {
+            background: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: #fff;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Your Name</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="section">
+        <h1>About Me</h1>
+        <p>Hi, I’m Muskan Maurya, a 20-year-old engineering student currently pursuing a Bachelor’s degree in Computer Science and Engineering at Government Engineering College, Hassan. My passion lies in crafting dynamic and user-friendly web experiences.
+
+            🚀 I’m an active Campus Ambassador for GeeksforGeeks and IIT BHU, where I help bridge the gap between students and the tech community. These roles have honed my leadership and communication skills, while also deepening my involvement in the world of technology and innovation.
+            
+            🌐 In web development, I enjoy exploring the latest technologies, building responsive websites, and solving real-world problems through code.
+            
+            Let’s connect and create something amazing together!
+            </p>
+    </section>
+    <section id="projects" class="section">
+        <h1>Projects</h1>
+        <div class="project-container">
+            <div class="project-card">
+                <h2>Agricultural Product Management</h2>
+                <p>
+                    An e-commerce platform designed to streamline the buying and selling of agricultural products. 
+                    The platform includes features such as product cataloging, secure payments, and user-friendly 
+                    interfaces tailored for farmers and buyers alike.
+                </p>
+                <ul style="text-align: left; margin-bottom: 1rem;">
+                    <li>🔹 Built with HTML, CSS, and JavaScript for a responsive UI.</li>
+                    <li>🔹 Integrated backend using Node.js and Express for seamless data flow.</li>
+                    <li>🔹 Database management using MongoDB to handle product and user data efficiently.</li>
+                </ul>
+                <a href="#" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- <section id="projects" class="section">
+        <h1>Projects</h1>
+        <div class="project-container">
+            <div class="project-card">
+                <h2>Project 1</h2>
+                <p>Brief description of the project.</p>
+                <a href="#">View Project</a>
+            </div>
+            <div class="project-card">
+                <h2>Project 2</h2>
+                <p>Brief description of the project.</p>
+                <a href="#">View Project</a>
+            </div>
+            <div class="project-card">
+                <h2>Project 3</h2>
+                <p>Brief description of the project.</p>
+                <a href="#">View Project</a>
+            </div>
+        </div>
+    </section> -->
+
+    <section id="skills" class="section">
+        <h1>Skills</h1>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Node.js</li>
+            <li>Python</li>
+            <li>C</li>
+
+        </ul>
+    </section>
+
+    <section id="contact" class="section">
+        <h1>Contact</h1>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
